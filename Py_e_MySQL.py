@@ -1,6 +1,6 @@
 import MySQLdb
 
-#Parêmetros da conexão
+#Parâmetros da conexão
 
 host= "localhost"
 user = "aplicacao"
@@ -24,7 +24,7 @@ def select(colunas, tabelas, where=None):
     c.execute(query)
     return c.fetchall()
 
-selecao = select("nome","CPF","alunos","id_aluno=1")
+selecao = select("nome","alunos","id_aluno=1")
 
 print(selecao)
 
@@ -34,8 +34,8 @@ def insert(valores, tabela, colunas=None):
     global c, con
     query = "INSERT INTO" + tabela
     if (colunas):
-        query = query + " ("+fields + ") "
-    query = query + "valores" + ",".join(["(" + v + ")" for v in values])
+        query = query + " ("+ colunas + ") "
+    query = query + "valores" + ",".join(["(" + v + ")" for v in valores])
 
     c.execute(query)
     con.commit()
